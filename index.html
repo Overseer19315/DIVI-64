@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIVI64 // MAINFRAME V3</title>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       LOGIN
+  ========================================================== -->
+
+  <div id="loginScreen" class="screen login-screen">
+
+    <div class="login-container">
+
+      <div class="system-mark">DIVI64</div>
+      <div class="system-title">CENTRAL MAINFRAME</div>
+      <div class="system-version">SECURE PERSONNEL MANAGEMENT SYSTEM // V3</div>
+
+      <div class="login-classification">
+        CLASSIFIED SYSTEM
+      </div>
+
+      <form id="loginForm">
+
+        <div class="input-group">
+          <label for="loginUser">IDENTIFICATION</label>
+          <input
+            type="text"
+            id="loginUser"
+            autocomplete="username"
+            placeholder="D-64-XXXX"
+          >
+        </div>
+
+        <div class="input-group">
+          <label for="loginPassword">AUTHORIZATION PASSWORD</label>
+          <input
+            type="password"
+            id="loginPassword"
+            autocomplete="current-password"
+            placeholder="••••••••••••"
+          >
+        </div>
+
+        <button type="submit" class="primary-button">
+          AUTHENTICATE
+        </button>
+
+      </form>
+
+      <div id="loginStatus" class="login-status"></div>
+
+      <div class="login-footer">
+        UNAUTHORIZED ACCESS IS LOGGED
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       MAIN APPLICATION
+  ========================================================== -->
+
+  <div id="mainSystem" class="system hidden">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+        <div class="brand">
+          DIVI64
+        </div>
+
+        <div class="system-name">
+          CENTRAL MAINFRAME
+        </div>
+      </div>
+
+      <div class="topbar-center">
+        <span id="systemClock">00:00:00</span>
+      </div>
+
+      <div class="topbar-right">
+
+        <div class="user-indicator">
+          <span id="headerUser">D-64----</span>
+          <span id="headerClearance">CL 0</span>
+        </div>
+
+        <button id="logoutButton" class="logout-button">
+          LOGOUT
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- =======================================================
+         SIDEBAR
+    ======================================================== -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-header">
+        MAINFRAME
+      </div>
+
+
+      <nav class="navigation">
+
+        <button class="nav-item active" data-page="dashboard">
+          <span class="nav-code">01</span>
+          <span>DASHBOARD</span>
+        </button>
+
+        <button class="nav-item" data-page="personnel">
+          <span class="nav-code">02</span>
+          <span>PERSONNEL</span>
+        </button>
+
+        <button class="nav-item" data-page="archives">
+          <span class="nav-code">03</span>
+          <span>ARCHIVES</span>
+        </button>
+
+        <button class="nav-item" data-page="operations">
+          <span class="nav-code">04</span>
+          <span>OPERATIONS</span>
+        </button>
+
+        <button class="nav-item" data-page="security">
+          <span class="nav-code">05</span>
+          <span>SECURITY</span>
+        </button>
+
+        <button class="nav-item" data-page="blacklist">
+          <span class="nav-code">06</span>
+          <span>BLACKLIST</span>
+        </button>
+
+        <button class="nav-item" data-page="administration">
+          <span class="nav-code">07</span>
+          <span>ADMINISTRATION</span>
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <div class="connection-status">
+          <span class="status-dot"></span>
+          MAINFRAME ONLINE
+        </div>
+
+        <div class="sidebar-classification">
+          DIVI64 // CONTROLLED ACCESS
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =======================================================
+         CONTENT
+    ======================================================== -->
+
+    <main class="main-content">
+
+
+      <!-- =====================================================
+           DASHBOARD
+      ====================================================== -->
+
+      <section id="pageDashboard" class="page active">
+
+        <div class="page-header">
+
+          <div>
+            <div class="page-kicker">DIVI64 CENTRAL SYSTEM</div>
+            <h1>MAINFRAME DASHBOARD</h1>
+            <p id="dashboardWelcome">
+              AUTHENTICATED PERSONNEL ACCESS
+            </p>
+          </div>
+
+          <div class="page-security">
+            CLEARANCE <span id="dashboardClearance">0</span>
+          </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+          <div class="stat-card">
+            <span class="stat-label">PERSONNEL</span>
+            <strong id="statPersonnel">12</strong>
+            <small>REGISTERED ACCOUNTS</small>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-label">ACTIVE SESSIONS</span>
+            <strong id="statSessions">0</strong>
+            <small>CURRENTLY CONNECTED</small>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-label">BLACKLISTED</span>
+            <strong id="statBlacklist">0</strong>
+            <small>ACTIVE ENTRIES</small>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-label">SECURITY EVENTS</span>
+            <strong id="statSecurityEvents">0</strong>
+            <small>RECORDED EVENTS</small>
+          </div>
+
+        </div>
+
+
+        <div class="dashboard-columns">
+
+          <div class="panel">
+
+            <div class="panel-header">
+              SYSTEM STATUS
+            </div>
+
+            <div class="status-list">
+
+              <div class="status-row">
+                <span>DATABASE</span>
+                <strong class="online">ONLINE</strong>
+              </div>
+
+              <div class="status-row">
+                <span>AUTHENTICATION</span>
+                <strong class="online">ONLINE</strong>
+              </div>
+
+              <div class="status-row">
+                <span>AUDIT ENGINE</span>
+                <strong class="online">ONLINE</strong>
+              </div>
+
+              <div class="status-row">
+                <span>ACCESS CONTROL</span>
+                <strong class="online">ONLINE</strong>
+              </div>
+
+              <div class="status-row">
+                <span>BLACKLIST SYSTEM</span>
+                <strong class="online">ONLINE</strong>
+              </div>
+
+              <div class="status-row">
+                <span>ARCHIVE SYSTEM</span>
+                <strong class="online">ONLINE</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="panel">
+
+            <div class="panel-header">
+              RECENT ACTIVITY
+            </div>
+
+            <div id="dashboardActivity" class="activity-list">
+              <!-- JS -->
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+            SYSTEM NOTICES
+          </div>
+
+          <div id="dashboardNotifications" class="notification-list">
+            <!-- JS -->
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           PERSONNEL
+      ====================================================== -->
+
+      <section id="pagePersonnel" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <div class="page-kicker">PERSONNEL MANAGEMENT</div>
+            <h1>PERSONNEL DATABASE</h1>
+            <p>AUTHORIZED PERSONNEL RECORDS</p>
+          </div>
+
+          <button id="personnelRefresh" class="secondary-button">
+            REFRESH DATABASE
+          </button>
+
+        </div>
+
+
+        <div class="toolbar">
+
+          <input
+            type="text"
+            id="personnelSearch"
+            placeholder="SEARCH PERSONNEL..."
+          >
+
+          <select id="personnelStatusFilter">
+            <option value="ALL">ALL STATUS</option>
+            <option value="ACTIVE">ACTIVE</option>
+            <option value="SUSPENDED">SUSPENDED</option>
+            <option value="LOCKED">LOCKED</option>
+            <option value="TERMINATED">TERMINATED</option>
+          </select>
+
+        </div>
+
+
+        <div class="table-container">
+
+          <table class="data-table">
+
+            <thead>
+              <tr>
+                <th>IDENTIFICATION</th>
+                <th>TYPE</th>
+                <th>STATUS</th>
+                <th>CLEARANCE</th>
+                <th>LAST ACCESS</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+
+            <tbody id="personnelTable">
+              <!-- JS -->
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           ARCHIVES
+      ====================================================== -->
+
+      <section id="pageArchives" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <div class="page-kicker">DOCUMENT CONTROL</div>
+            <h1>CLASSIFIED ARCHIVES</h1>
+            <p>ACCESS SUBJECT TO CLEARANCE</p>
+          </div>
+
+        </div>
+
+
+        <div class="archive-grid">
+
+          <button class="archive-card" data-clearance="1">
+            <span>CL-01</span>
+            <strong>RESTRICTED ARCHIVES</strong>
+            <small>CLEARANCE 1+</small>
+          </button>
+
+          <button class="archive-card" data-clearance="2">
+            <span>CL-02</span>
+            <strong>CONFIDENTIAL ARCHIVES</strong>
+            <small>CLEARANCE 2+</small>
+          </button>
+
+          <button class="archive-card" data-clearance="3">
+            <span>CL-03</span>
+            <strong>SECRET ARCHIVES</strong>
+            <small>CLEARANCE 3+</small>
+          </button>
+
+          <button class="archive-card" data-clearance="4">
+            <span>CL-04</span>
+            <strong>TOP SECRET ARCHIVES</strong>
+            <small>CLEARANCE 4+</small>
+          </button>
+
+          <button class="archive-card" data-clearance="5">
+            <span>CL-05</span>
+            <strong>OVERWATCH ARCHIVES</strong>
+            <small>CLEARANCE 5 REQUIRED</small>
+          </button>
+
+          <button class="archive-card" data-clearance="5">
+            <span>CL-06</span>
+            <strong>LOCKED FILES</strong>
+            <small>CLEARANCE 5 REQUIRED</small>
+          </button>
+
+        </div>
+
+
+        <div id="archiveViewer" class="panel hidden">
+
+          <div class="panel-header">
+            FILE VIEWER
+          </div>
+
+          <div id="archiveContent">
+            <!-- JS -->
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           OPERATIONS
+      ====================================================== -->
+
+      <section id="pageOperations" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <div class="page-kicker">OPERATIONAL CONTROL</div>
+            <h1>OPERATIONS</h1>
+            <p>OPERATIONAL RECORDS AND STATUS</p>
+          </div>
+
+        </div>
+
+
+        <div class="operation-tabs">
+
+          <button class="operation-tab active" data-operation="active">
+            ACTIVE
+          </button>
+
+          <button class="operation-tab" data-operation="planned">
+            PLANNED
+          </button>
+
+          <button class="operation-tab" data-operation="completed">
+            COMPLETED
+          </button>
+
+        </div>
+
+
+        <div id="operationsList" class="operations-list">
+          <!-- JS -->
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           SECURITY
+      ====================================================== -->
+
+      <section id="pageSecurity" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <div class="page-kicker">SYSTEM SECURITY</div>
+            <h1>SECURITY CENTER</h1>
+            <p>SECURITY EVENTS AND ACCESS CONTROL</p>
+          </div>
+
+        </div>
+
+
+        <div class="security-overview">
+
+          <div class="security-card">
+            <span>ACTIVE SESSIONS</span>
+            <strong id="securitySessions">0</strong>
+          </div>
+
+          <div class="security-card">
+            <span>FAILED LOGINS</span>
+            <strong id="failedLogins">0</strong>
+          </div>
+
+          <div class="security-card">
+            <span>LOCKED ACCOUNTS</span>
+            <strong id="lockedAccounts">0</strong>
+          </div>
+
+          <div class="security-card">
+            <span>SECURITY EVENTS</span>
+            <strong id="securityEvents">0</strong>
+          </div>
+
+        </div>
+
+
+        <div class="security-tabs">
+
+          <button data-security-tab="sessions">
+            ACTIVE SESSIONS
+          </button>
+
+          <button data-security-tab="logins">
+            LOGIN HISTORY
+          </button>
+
+          <button data-security-tab="denials">
+            ACCESS DENIALS
+          </button>
+
+          <button data-security-tab="events">
+            SECURITY EVENTS
+          </button>
+
+          <button data-security-tab="clearance">
+            CLEARANCE HISTORY
+          </button>
+
+        </div>
+
+
+        <div id="securityContent" class="panel">
+          <!-- JS -->
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           BLACKLIST
+      ====================================================== -->
+
+      <section id="pageBlacklist" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <div class="page-kicker">PERSONNEL SECURITY</div>
+            <h1>BLACKLIST SYSTEM</h1>
+            <p>CONTROLLED PERSONNEL RESTRICTION SYSTEM</p>
+          </div>
+
+        </div>
+
+
+        <div class="blacklist-actions">
+
+          <button
+            id="blacklistRequestButton"
+            class="action-card"
+            data-required-clearance="4"
+          >
+            <strong>BLACKLIST REQUEST</strong>
+            <span>CLEARANCE 4+</span>
+          </button>
+
+          <button
+            id="blacklistTerminalButton"
+            class="action-card"
+            data-required-clearance="5"
+          >
+            <strong>BLACKLIST TERMINAL</strong>
+            <span>CLEARANCE 5</span>
+          </button>
+
+          <button
+            id="blacklistHistoryButton"
+            class="action-card"
+            data-required-clearance="5"
+          >
+            <strong>BLACKLIST HISTORY</strong>
+            <span>CLEARANCE 5</span>
+          </button>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+            ACTIVE BLACKLIST
+          </div>
+
+          <div id="blacklistList" class="blacklist-list">
+            <!-- JS -->
+          </div>
+
+        </div>
+
+
+        <div id="blacklistRequestsPanel" class="panel">
+
+          <div class="panel-header">
+            PENDING REQUESTS
+          </div>
+
+          <div id="blacklistRequests">
+            <!-- JS -->
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           ADMINISTRATION
+      ====================================================== -->
+
+      <section id="pageAdministration" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <div class="page-kicker">AUTHORIZED ADMINISTRATION</div>
+            <h1>ADMINISTRATION</h1>
+            <p>CONTROLLED SYSTEM MANAGEMENT</p>
+          </div>
+
+          <div class="page-security">
+            ADMINISTRATIVE ACCESS
+          </div>
+
+        </div>
+
+
+        <!-- ADMIN OVERVIEW -->
+
+        <div class="admin-overview">
+
+          <div class="admin-stat">
+            <span>ACCOUNTS</span>
+            <strong id="adminAccountCount">0</strong>
+          </div>
+
+          <div class="admin-stat">
+            <span>ACTIVE</span>
+            <strong id="adminActiveCount">0</strong>
+          </div>
+
+          <div class="admin-stat">
+            <span>LOCKED</span>
+            <strong id="adminLockedCount">0</strong>
+          </div>
+
+          <div class="admin-stat">
+            <span>ADMIN EVENTS</span>
+            <strong id="adminEventCount">0</strong>
+          </div>
+
+        </div>
+
+
+        <!-- ADMIN FUNCTIONS -->
+
+        <div class="admin-function-grid">
+
+          <button class="admin-function" data-admin-function="accounts">
+            <span class="function-code">ADM-01</span>
+            <strong>ACCOUNT CONTROL</strong>
+            <small>CREATE, SUSPEND, LOCK AND REACTIVATE ACCOUNTS</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="clearance">
+            <span class="function-code">ADM-02</span>
+            <strong>CLEARANCE MANAGEMENT</strong>
+            <small>MODIFY PERSONNEL AUTHORIZATION LEVELS</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="passwords">
+            <span class="function-code">ADM-03</span>
+            <strong>CREDENTIAL MANAGEMENT</strong>
+            <small>RESET OR FORCE PASSWORD CHANGES</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="sessions">
+            <span class="function-code">ADM-04</span>
+            <strong>SESSION CONTROL</strong>
+            <small>MONITOR AND TERMINATE ACTIVE SESSIONS</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="audit">
+            <span class="function-code">ADM-05</span>
+            <strong>ADMINISTRATIVE AUDIT</strong>
+            <small>REVIEW ALL ADMINISTRATIVE ACTIONS</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="configuration">
+            <span class="function-code">ADM-06</span>
+            <strong>SYSTEM CONFIGURATION</strong>
+            <small>MANAGE MAINFRAME CONFIGURATION</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="diagnostics">
+            <span class="function-code">ADM-07</span>
+            <strong>SYSTEM DIAGNOSTICS</strong>
+            <small>DATABASE AND INFRASTRUCTURE DIAGNOSTICS</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="maintenance">
+            <span class="function-code">ADM-08</span>
+            <strong>MAINTENANCE MODE</strong>
+            <small>CONTROL SYSTEM MAINTENANCE STATE</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="emergency">
+            <span class="function-code">ADM-09</span>
+            <strong>EMERGENCY PROTOCOL</strong>
+            <small>RESTRICT NON-ESSENTIAL SYSTEM ACCESS</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="storage">
+            <span class="function-code">ADM-10</span>
+            <strong>STORAGE MANAGEMENT</strong>
+            <small>DATABASE AND STORAGE INFORMATION</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="notifications">
+            <span class="function-code">ADM-11</span>
+            <strong>SYSTEM NOTIFICATIONS</strong>
+            <small>MANAGE SYSTEM-WIDE NOTIFICATIONS</small>
+          </button>
+
+          <button class="admin-function" data-admin-function="auditExport">
+            <span class="function-code">ADM-12</span>
+            <strong>AUDIT EXPORT</strong>
+            <small>EXPORT AUTHORIZED SYSTEM RECORDS</small>
+          </button>
+
+        </div>
+
+
+        <!-- ADMIN WORKSPACE -->
+
+        <div id="adminWorkspace" class="panel hidden">
+
+          <div class="panel-header">
+            ADMINISTRATIVE WORKSPACE
+          </div>
+
+          <div id="adminWorkspaceContent">
+            <!-- JS -->
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- =======================================================
+         GLOBAL SEARCH
+    ======================================================== -->
+
+    <div id="globalSearchOverlay" class="overlay hidden">
+
+      <div class="modal search-modal">
+
+        <div class="modal-header">
+          <span>GLOBAL SEARCH</span>
+          <button class="modal-close" data-close="globalSearchOverlay">
+            ×
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <input
+            type="text"
+            id="globalSearchInput"
+            placeholder="SEARCH PERSONNEL, FILES, EVENTS..."
+          >
+
+          <div id="globalSearchResults">
+            <!-- JS -->
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         PERSONNEL PROFILE MODAL
+    ======================================================== -->
+
+    <div id="personnelModal" class="overlay hidden">
+
+      <div class="modal large-modal">
+
+        <div class="modal-header">
+
+          <span>PERSONNEL RECORD</span>
+
+          <button class="modal-close" data-close="personnelModal">
+            ×
+          </button>
+
+        </div>
+
+        <div id="personnelModalContent" class="modal-body">
+          <!-- JS -->
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         CLEARANCE CHANGE MODAL
+    ======================================================== -->
+
+    <div id="clearanceModal" class="overlay hidden">
+
+      <div class="modal">
+
+        <div class="modal-header">
+
+          <span>CHANGE CLEARANCE LEVEL</span>
+
+          <button class="modal-close" data-close="clearanceModal">
+            ×
+          </button>
+
+        </div>
+
+        <div class="modal-body">
+
+          <div id="clearanceTargetInfo"></div>
+
+          <label for="clearanceSelect">
+            NEW CLEARANCE LEVEL
+          </label>
+
+          <select id="clearanceSelect">
+
+            <option value="0">0 — UNAUTHORIZED</option>
+            <option value="1">1 — RESTRICTED</option>
+            <option value="2">2 — CONFIDENTIAL</option>
+            <option value="3">3 — SECRET</option>
+            <option value="4">4 — TOP SECRET</option>
+            <option value="5">5 — OVERWATCH</option>
+
+          </select>
+
+          <label for="clearancePassword">
+            AUTHORIZATION PASSWORD
+          </label>
+
+          <input
+            type="password"
+            id="clearancePassword"
+            placeholder="ENTER PASSWORD"
+          >
+
+          <div id="clearanceError" class="form-error"></div>
+
+          <div class="modal-actions">
+
+            <button
+              class="secondary-button"
+              data-close="clearanceModal"
+            >
+              CANCEL
+            </button>
+
+            <button
+              id="confirmClearanceChange"
+              class="primary-button"
+            >
+              CONFIRM CHANGE
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         BLACKLIST REQUEST MODAL
+    ======================================================== -->
+
+    <div id="blacklistRequestModal" class="overlay hidden">
+
+      <div class="modal">
+
+        <div class="modal-header">
+
+          <span>BLACKLIST REQUEST</span>
+
+          <button class="modal-close" data-close="blacklistRequestModal">
+            ×
+          </button>
+
+        </div>
+
+        <div class="modal-body">
+
+          <label for="blacklistTarget">
+            TARGET PERSONNEL
+          </label>
+
+          <select id="blacklistTarget">
+            <!-- JS -->
+          </select>
+
+          <label for="blacklistClassification">
+            CLASSIFICATION
+          </label>
+
+          <select id="blacklistClassification">
+
+            <option value="SECURITY">
+              SECURITY
+            </option>
+
+            <option value="ACCESS">
+              ACCESS VIOLATION
+            </option>
+
+            <option value="CONDUCT">
+              CONDUCT
+            </option>
+
+            <option value="OTHER">
+              OTHER
+            </option>
+
+          </select>
+
+          <label for="blacklistReason">
+            JUSTIFICATION
+          </label>
+
+          <textarea
+            id="blacklistReason"
+            rows="6"
+            placeholder="ENTER JUSTIFICATION..."
+          ></textarea>
+
+          <div class="modal-actions">
+
+            <button
+              class="secondary-button"
+              data-close="blacklistRequestModal"
+            >
+              CANCEL
+            </button>
+
+            <button
+              id="submitBlacklistRequest"
+              class="primary-button"
+            >
+              SUBMIT REQUEST
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         BLACKLIST TERMINAL
+    ======================================================== -->
+
+    <div id="blacklistTerminalModal" class="overlay hidden">
+
+      <div class="modal large-modal">
+
+        <div class="modal-header">
+
+          <span>BLACKLIST TERMINAL // CL5</span>
+
+          <button class="modal-close" data-close="blacklistTerminalModal">
+            ×
+          </button>
+
+        </div>
+
+        <div class="modal-body">
+
+          <div class="terminal-warning">
+            OVERWATCH AUTHORIZATION REQUIRED
+          </div>
+
+          <div class="blacklist-terminal-grid">
+
+            <div>
+
+              <label for="terminalTarget">
+                TARGET
+              </label>
+
+              <select id="terminalTarget">
+                <!-- JS -->
+              </select>
+
+            </div>
+
+            <div>
+
+              <label for="terminalAction">
+                ACTION
+              </label>
+
+              <select id="terminalAction">
+
+                <option value="ADD">
+                  ADD TO BLACKLIST
+                </option>
+
+                <option value="REMOVE">
+                  REMOVE FROM BLACKLIST
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <label for="terminalReason">
+            AUTHORIZATION RECORD
+          </label>
+
+          <textarea
+            id="terminalReason"
+            rows="5"
+            placeholder="ENTER AUTHORIZATION RECORD..."
+          ></textarea>
+
+          <div id="terminalStatus"></div>
+
+          <div class="modal-actions">
+
+            <button
+              class="secondary-button"
+              data-close="blacklistTerminalModal"
+            >
+              CANCEL
+            </button>
+
+            <button
+              id="executeBlacklistAction"
+              class="danger-button"
+            >
+              EXECUTE ACTION
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         CONFIRMATION MODAL
+    ======================================================== -->
+
+    <div id="confirmationModal" class="overlay hidden">
+
+      <div class="modal">
+
+        <div class="modal-header">
+          <span>CONFIRM ADMINISTRATIVE ACTION</span>
+        </div>
+
+        <div class="modal-body">
+
+          <div id="confirmationMessage">
+            <!-- JS -->
+          </div>
+
+          <div class="modal-actions">
+
+            <button
+              id="cancelConfirmation"
+              class="secondary-button"
+            >
+              CANCEL
+            </button>
+
+            <button
+              id="confirmConfirmation"
+              class="danger-button"
+            >
+              CONFIRM
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         SYSTEM ALERT
+    ======================================================== -->
+
+    <div id="systemAlert" class="system-alert hidden">
+
+      <div class="alert-title">
+        SYSTEM NOTIFICATION
+      </div>
+
+      <div id="systemAlertMessage"></div>
+
+      <button id="closeSystemAlert">
+        DISMISS
+      </button>
+
+    </div>
+
+
+    <!-- =======================================================
+         SEARCH BUTTON
+    ======================================================== -->
+
+    <button
+      id="globalSearchButton"
+      class="global-search-button"
+      title="Global Search"
+    >
+      SEARCH
+    </button>
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
